@@ -9,10 +9,10 @@ gem "koala", "~> 1.10.0rc"
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 group :production do
-gem 'sqlite3'
+gem 'pg'
 end
 group :development do
-gem 'pg'
+gem 'sqlite3'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
