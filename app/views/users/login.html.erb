@@ -1,0 +1,10 @@
+<p>
+<%= image_tag @user['picture']['data']['url'].to_s %>
+<%= @user['name'] %>
+</p>
+<p>
+<% @friends.each do |fd| %> 
+	<%= p fd %>
+<% end %>
+</p>
+
