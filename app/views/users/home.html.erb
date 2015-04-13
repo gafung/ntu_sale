@@ -3,8 +3,10 @@
 <%= @user['name'] %>
 </p>
 <p>
+<ul>
 <% @friends.each do |fd| %> 
-	<%= p fd %>
+	<li><%= fd['name'] %> ::::: <%= fd['id'] %></li>
 <% end %>
+</ul>
 </p>
 

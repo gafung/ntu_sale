@@ -1,1 +1,14 @@
 <%= link_to "Facebook Login", '/auth/facebook' %>
+
+
+<p>
+<% if @users.size == 0 %>
+	No users.
+<% else %>
+<ul>
+<% @users.each do |u| %>
+	<li><%= u.fb_id %></li>
+<% end %>
+</ul>
+<% end %>
+</p>

@@ -11,3 +11,15 @@ class User < ActiveRecord::Base
     facebook.get_connections("me", "friends")
   end
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer         not null, primary key
+#  fb_id      :string
+#  name       :string
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

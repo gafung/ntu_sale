@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fb_id: MyString
+  name: MyString
+
+two:
+  fb_id: MyString
+  name: MyString
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer         not null, primary key
+#  fb_id      :string
+#  name       :string
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
