@@ -1,12 +1,39 @@
-<p>
-<%= image_tag @user['picture']['data']['url'].to_s %>
-<%= @user['name'] %>
-</p>
-<p>
-<ul>
-<% @friends.each do |fd| %> 
-	<li><%= fd['name'] %> ::::: <%= fd['id'] %></li>
-<% end %>
-</ul>
-</p>
+<div id="userhome-container" class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Website Homepage</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <% if @signed_in %>
+                <%= @current_user %>
+            <% else %>
+                <%= link_to "Facebook Login", '/auth/facebook', class: 'btn btn-success' %>
+            <% end %>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-4">
+            <h3>Advisors</h3>
+        </div>
+        <div class="col-xs-4">
+            <% if @users.size == 0 %>
+                No users.
+            <% else %>
+            <ul>
+            <% @users.each do |u| %>
+                <li><%= u.fb_id %></li>
+            <% end %>
+            </ul>
+            <% end %>
+        </div>
+        <div class="col-xs-4">
+            <h3>Friends who are advisors</h3>
+        </div>
+    </div>
+</div>
 

@@ -1,0 +1,13 @@
+<h1>User's homepage</h1>
+<p>
+<%= image_tag @basic_info['picture']['data']['url'].to_s %>
+<%= @basic_info %>
+</p>
+<p>
+<ul>
+<% @friends.each do |fd| %> 
+	<li><%= fd['name'] %> ::::: <%= fd['id'] %></li>
+<% end %>
+</ul>
+</p>
+
