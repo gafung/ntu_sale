@@ -1,39 +1,50 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+            <a class="navbar-brand" href="/">港仔の出清台大</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li><%= image_tag(@current_user['photo']) %></li>
+                <li><a href="#"><%= @current_user['name'] %></a></li>
+            </ul>
+    </div>
+</nav>
+    <div id="main-container" class="container">
+        <div class="row">
+            <div class"col-xs-12">
+                <% flash.each do |name, msg| %>
+                    <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+                <% end %>
+            </div>
+        </div>
+        <div class="row">
+            <div class"col-xs-12">
 <div id="userhome-container" class="container">
     <div class="row">
-        <div class="col-xs-12">
-            <h1>Website Homepage</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <% if @signed_in %>
-                <%= @current_user %>
-            <% else %>
-                <%= link_to "Facebook Login", '/auth/facebook', class: 'btn btn-success' %>
+        <table class="table table-hover">
+            <tr>
+                <th>  </th>
+                <th>名稱</th>
+                <th>價錢</th>
+                <th>保留／排位</th>
+            </tr>
+            <% user=@current_user %>
+            <% @items.each do |item| %>
+                <tr>
+                    <td><%= image_tag(item.photo, size: "200") %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.price %></td>
+                    <td>
+                        <% pos = item.position(@re) %>
+                        <% if pos %>
+                            商品已保留。排位：<%= pos %>
+                        <% else %>
+                         <%= button_to "reserve", reserve_path, params: {ii: item.id}  %>
+                        <% end %>
+                    </td>
+                </tr>
             <% end %>
-
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-xs-4">
-            <h3>Advisors</h3>
-        </div>
-        <div class="col-xs-4">
-            <% if @users.size == 0 %>
-                No users.
-            <% else %>
-            <ul>
-            <% @users.each do |u| %>
-                <li><%= u.fb_id %></li>
-            <% end %>
-            </ul>
-            <% end %>
-        </div>
-        <div class="col-xs-4">
-            <h3>Friends who are advisors</h3>
-        </div>
+        </table>
     </div>
 </div>
-
+            </div>
+        </div>
+    </div>

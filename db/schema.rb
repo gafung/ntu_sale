@@ -11,13 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413061758) do
+ActiveRecord::Schema.define(version: 20150601022454) do
+
+  create_table "items", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "photo"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "queue"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "item_id"
+  end
+
+  add_index "reservations", ["item_id"], name: "index_reservations_on_item_id"
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "fb_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
+    t.string   "photo"
   end
 
   add_index "users", ["fb_id"], name: "index_users_on_fb_id"

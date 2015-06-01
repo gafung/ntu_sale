@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :reservations
+  has_many :items, through: :reservations
 
   validates :fb_id, uniqueness: true
 
